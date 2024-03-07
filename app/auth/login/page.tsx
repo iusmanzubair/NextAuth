@@ -1,7 +1,11 @@
 import { LoginForm } from "@/components/auth/login-form";
 
-const Login = () => {
-  return <LoginForm />;
+const LoginPage = () => {
+  return (
+    <div className="flex items-center justify-center h-screen w-full border-2">
+      <LoginForm />
+    </div>
+  );
 };
 
-export default Login;
+export default LoginPage;
