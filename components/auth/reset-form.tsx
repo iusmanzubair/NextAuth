@@ -23,7 +23,6 @@ import { FormSuccess } from "@/components/form-success";
 import { Reset } from "@/actions/reset";
 
 export const ResetForm = () => {
-
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
@@ -31,7 +30,7 @@ export const ResetForm = () => {
   const form = useForm<z.infer<typeof ResetSchema>>({
     resolver: zodResolver(ResetSchema),
     defaultValues: {
-      email: ""
+      email: "",
     },
   });
 

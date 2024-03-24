@@ -21,7 +21,14 @@ export default async function RootLayout({
       <html lang="en">
         <body className={GeistSans.className}>
           {children}
-          <Toaster />
+          <Toaster
+            toastOptions={{
+              classNames: {
+                error: "bg-destructive/15 text-destructive border-none",
+                success: "bg-emerald-500/15 text-emerald-500 border-none",
+              },
+            }}
+          />
         </body>
       </html>
     </SessionProvider>

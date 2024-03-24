@@ -21,9 +21,9 @@ export const generateTwoFactorToken = async (email: string) => {
     data: {
       email,
       token,
-      expires
-    }
-  })
+      expires,
+    },
+  });
 
   return twoFactorToken;
 };

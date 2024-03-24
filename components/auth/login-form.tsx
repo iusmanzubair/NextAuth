@@ -27,6 +27,7 @@ import Link from "next/link";
 
 export const LoginForm = () => {
   const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl");
   const urlError =
     searchParams.get("error") === "OAuthAccountNotLinked"
       ? "Email already in use with different provider!"
@@ -50,7 +51,7 @@ export const LoginForm = () => {
     setSuccess("");
 
     startTransition(() => {
-      Login(values).then((data) => {
+      Login(values, callbackUrl).then((data) => {
         if (data?.error) {
           form.reset();
           setError(data?.error);
@@ -78,23 +79,23 @@ export const LoginForm = () => {
           <div className="space-y-4">
             {showTwoFactor && (
               <FormField
-              control={form.control}
-              name="code"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Two Factor Code</FormLabel>
-                  <FormControl>
-                    <Input
-                      disabled={isPending}
-                      placeholder="000000"
-                      inputMode="numeric"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+                control={form.control}
+                name="code"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Two Factor Code</FormLabel>
+                    <FormControl>
+                      <Input
+                        disabled={isPending}
+                        placeholder="000000"
+                        inputMode="numeric"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             )}
             {!showTwoFactor && (
               <>
